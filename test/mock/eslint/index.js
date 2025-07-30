@@ -32,6 +32,9 @@ class ESLintMock {
   }
 }
 
+ESLintMock.version = "9";
+
 module.exports = {
   ESLint: ESLintMock,
+  loadESLint: async () => ESLintMock,
 };
