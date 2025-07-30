@@ -21,7 +21,14 @@ describe("Threading", () => {
   });
 
   it("threaded should lint files", async () => {
-    const threaded = await loadESLintThreaded("bar", 1, { ignore: false });
+    const threaded = await loadESLintThreaded("bar", 1, {
+      ignore: false,
+      configType: "flat",
+      overrideConfigFile: join(
+        __dirname,
+        "./config-for-tests/eslint.config.mjs",
+      ),
+    });
     try {
       const [good, bad] = await Promise.all([
         threaded.lintFiles(join(__dirname, "fixtures/good.js")),

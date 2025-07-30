@@ -14,7 +14,10 @@ export default (entry, pluginConf = {}, webpackConf = {}) => {
     },
     plugins: [
       new ESLintPlugin({
-        overrideConfigFile: join(testDir, "./eslint.config.mjs"),
+        overrideConfigFile: join(
+          testDir,
+          "./config-for-tests/eslint.config.mjs",
+        ),
         // this disables the use of .eslintignore, since it contains the fixtures
         // folder to skip it on the global linting, but here we want the opposite
         // (we only use .eslintignore on the test that checks this)
