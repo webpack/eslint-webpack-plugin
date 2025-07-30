@@ -22,7 +22,7 @@ const resultStorage = new WeakMap();
 
 /**
  * @param {Compilation} compilation compilation
- * @returns {LintResultMap} litn result map
+ * @returns {LintResultMap} lint result map
  */
 function getResultStorage({ compiler }) {
   let storage = resultStorage.get(compiler);
@@ -49,7 +49,7 @@ async function flatten(results) {
 /**
  * @param {ESLint} eslint eslint
  * @param {LintResult[]} results results
- * @returns {Promise<LintResult[]>} reuslt without warnings
+ * @returns {Promise<LintResult[]>} result without warnings
  */
 async function removeIgnoredWarnings(eslint, results) {
   const filterPromises = results.map(async (result) => {
