@@ -70,7 +70,6 @@
     "@types/micromatch": "^4.0.9",
     "@types/node": "^22.15.30",
     "@types/normalize-path": "^3.0.2",
-    "@types/webpack": "^5.28.5",
     "babel-jest": "^30.0.0",
     "chokidar": "^4.0.3",
     "cross-env": "^7.0.3",

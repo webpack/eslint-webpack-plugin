@@ -1,9 +1,9 @@
 export = linter;
 /**
- * @param {string|undefined} key
- * @param {Options} options
- * @param {Compilation} compilation
- * @returns {Promise<{lint: Linter, report: Reporter, threads: number}>}
+ * @param {string | undefined} key a cache key
+ * @param {Options} options options
+ * @param {Compilation} compilation compilation
+ * @returns {Promise<{lint: Linter, report: Reporter, threads: number}>} linter with additional functions
  */
 declare function linter(
   key: string | undefined,

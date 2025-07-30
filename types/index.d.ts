@@ -1,16 +1,16 @@
 export = ESLintWebpackPlugin;
 declare class ESLintWebpackPlugin {
   /**
-   * @param {Options} options
+   * @param {Options=} options options
    */
-  constructor(options?: Options);
+  constructor(options?: Options | undefined);
   key: string;
   options: import("./options").PluginOptions;
   /**
-   * @param {Compiler} compiler
-   * @param {Omit<Options, 'resourceQueryExclude'> & {resourceQueryExclude: RegExp[]}} options
-   * @param {string[]} wanted
-   * @param {string[]} exclude
+   * @param {Compiler} compiler compiler
+   * @param {Omit<Options, 'resourceQueryExclude'> & { resourceQueryExclude: RegExp[] }} options options
+   * @param {string[]} wanted wanted files
+   * @param {string[]} exclude excluded files
    */
   run(
     compiler: Compiler,
@@ -21,14 +21,13 @@ declare class ESLintWebpackPlugin {
     exclude: string[],
   ): Promise<void>;
   /**
-   * @param {Compiler} compiler
+   * @param {Compiler} compiler compiler
    * @returns {void}
    */
   apply(compiler: Compiler): void;
   /**
-   *
-   * @param {Compiler} compiler
-   * @returns {string}
+   * @param {Compiler} compiler compiler
+   * @returns {string} context
    */
   getContext(compiler: Compiler): string;
 }

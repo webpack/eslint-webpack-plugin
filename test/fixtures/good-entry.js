@@ -1,1 +1,1 @@
-require('./good');
+require("./good");
