@@ -1,13 +1,13 @@
-import webpack from 'webpack';
+import webpack from "webpack";
 
-import conf from './conf';
+import conf from "./conf";
 
 /**
  * new a test webpack compiler
- * @param {String} context
- * @param {import('../../src/options').Options} pluginConf
- * @param {webpack.Configuration} webpackConf
- * @returns {ReturnType<webpack>}
+ * @param {string} context context
+ * @param {import('../../src/options').Options} pluginConf plugin options
+ * @param {webpack.Configuration} webpackConf webpack configuration
+ * @returns {ReturnType<webpack>} return result from webpack
  */
 export default (context, pluginConf = {}, webpackConf = {}) => {
   const compiler = webpack(conf(context, pluginConf, webpackConf));

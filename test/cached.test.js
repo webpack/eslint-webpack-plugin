@@ -1,13 +1,13 @@
-import { join } from 'path';
+import { join } from "node:path";
 
-import { removeSync } from 'fs-extra';
+import { removeSync } from "fs-extra";
 
-import webpack from 'webpack';
+import webpack from "webpack";
 
-import conf from './utils/conf';
+import conf from "./utils/conf";
 
-describe('error (cached module)', () => {
-  const cacheLocation = join(__dirname, 'cache');
+describe("error (cached module)", () => {
+  const cacheLocation = join(__dirname, "cache");
 
   beforeEach(() => {
     removeSync(cacheLocation);
@@ -17,10 +17,10 @@ describe('error (cached module)', () => {
     removeSync(cacheLocation);
   });
 
-  it('should return error even if module is cached', (done) => {
-    const config = conf('error');
+  it("should return error even if module is cached", (done) => {
+    const config = conf("error");
     config.cache = {
-      type: 'filesystem',
+      type: "filesystem",
       idleTimeout: 0,
       idleTimeoutAfterLargeChanges: 0,
       idleTimeoutForInitialStore: 0,

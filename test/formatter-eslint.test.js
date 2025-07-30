@@ -1,8 +1,8 @@
-import pack from './utils/pack';
+import pack from "./utils/pack";
 
-describe('formatter eslint', () => {
-  it('should use eslint formatter', async () => {
-    const compiler = pack('error');
+describe("formatter eslint", () => {
+  it("should use eslint formatter", async () => {
+    const compiler = pack("error");
 
     const stats = await compiler.runAsync();
     expect(stats.hasWarnings()).toBe(false);

@@ -1,15 +1,15 @@
 class ESLintMock {
   // Disabled because these are simplified mock methods.
-  // eslint-disable-next-line class-methods-use-this
+
   async lintFiles() {
     return [
       {
-        filePath: '',
+        filePath: "",
         messages: [
           {
-            ruleId: 'no-undef',
+            ruleId: "no-undef",
             severity: 2,
-            message: 'Fake error',
+            message: "Fake error",
             line: 1,
             column: 11,
           },
@@ -18,11 +18,11 @@ class ESLintMock {
         warningCount: 0,
         fixableErrorCount: 0,
         fixableWarningCount: 0,
-        source: '',
+        source: "",
       },
     ];
   }
-  // eslint-disable-next-line class-methods-use-this
+
   async loadFormatter() {
     return {
       format(results) {

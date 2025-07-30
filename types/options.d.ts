@@ -1,5 +1,5 @@
-export type ESLintOptions = import('eslint').ESLint.Options;
-export type LintResult = import('eslint').ESLint.LintResult;
+export type ESLintOptions = import("eslint").ESLint.Options;
+export type LintResult = import("eslint").ESLint.LintResult;
 export type FormatterFunction = (results: LintResult[]) => string;
 export type OutputReport = {
   filePath?: string | undefined;

@@ -59,7 +59,7 @@ pnpm add -D eslint
 Then add the plugin to your webpack configuration. For example:
 
 ```js
-const ESLintPlugin = require('eslint-webpack-plugin');
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
   // ...
@@ -111,7 +111,7 @@ Specify the path to the cache location. Can be a file or a directory.
 - Type:
 
 ```ts
-type configType = 'flat' | 'eslintrc';
+type configType = "flat" | "eslintrc";
 ```
 
 - Default: `flat`
@@ -154,7 +154,7 @@ If the `eslintPath` is a folder like a official ESlint, or specify a `formatter`
 - Type:
 
 ```ts
-type extensions = string | Array<string>;
+type extensions = string | string[];
 ```
 
 - Default: `'js'`
@@ -166,7 +166,7 @@ Specify file extensions that should be checked.
 - Type:
 
 ```ts
-type exclude = string | Array<string>;
+type exclude = string | string[];
 ```
 
 - Default: `'node_modules'`
@@ -178,7 +178,7 @@ Specify the files/directories to exclude. Must be relative to `options.context`.
 - Type:
 
 ```ts
-type resourceQueryExclude = RegExp | Array<RegExp>;
+type resourceQueryExclude = RegExp | RegExp[];
 ```
 
 - Default: `[]`
@@ -190,7 +190,7 @@ Specify the resource query to exclude.
 - Type:
 
 ```ts
-type files = string | Array<string>;
+type files = string | string[];
 ```
 
 - Default: `null`
@@ -218,10 +218,12 @@ Will enable [ESLint autofix feature](https://eslint.org/docs/developer-guide/nod
 - Type:
 
 ```ts
-type formatter = string| (
-  results:  Array<import('eslint').ESLint.LintResult>,
-  data?: import('eslint').ESLint.LintResultData | undefined
-) => string
+type formatter =
+  | string
+  | ((
+      results: import("eslint").ESLint.LintResult[],
+      data?: import("eslint").ESLint.LintResultData | undefined,
+    ) => string);
 ```
 
 - Default: `'stylish'`
@@ -333,8 +335,8 @@ type outputReport =
         | (
             | string
             | ((
-                results: Array<import('eslint').ESLint.LintResult>,
-                data?: import('eslint').ESLint.LintResultData | undefined,
+                results: import("eslint").ESLint.LintResult[],
+                data?: import("eslint").ESLint.LintResultData | undefined,
               ) => string)
           )
         | undefined;

@@ -1,10 +1,11 @@
-import pack from './utils/pack';
-import { ESLint } from 'eslint';
+import { ESLint } from "eslint";
+import pack from "./utils/pack";
 
-(ESLint && parseFloat(ESLint.version) < 9 ? describe.skip : describe)(
-  'circular plugin',
+(ESLint && Number.parseFloat(ESLint.version) < 9 ? describe.skip : describe)(
+  "circular plugin",
   () => {
-    it('should support plugins with circular configs', async () => {
+    // eslint-disable-next-line jest/require-top-level-describe
+    test("should support plugins with circular configs", async () => {
       const plugin = {
         configs: {},
         rules: {},
@@ -21,14 +22,14 @@ import { ESLint } from 'eslint';
       });
 
       const loaderOptions = {
-        configType: 'flat',
+        configType: "flat",
         overrideConfig: {
-          plugins: { plugin: plugin },
+          plugins: { plugin },
         },
         overrideConfigFile: true,
       };
 
-      const compiler = pack('good', loaderOptions);
+      const compiler = pack("good", loaderOptions);
 
       const stats = await compiler.runAsync();
       expect(stats.hasWarnings()).toBe(false);

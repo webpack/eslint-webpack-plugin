@@ -1,24 +1,24 @@
-const { isAbsolute, join } = require('path');
+const { isAbsolute, join } = require("node:path");
 
-const { isMatch } = require('micromatch');
+const { isMatch } = require("micromatch");
 
-const { getOptions } = require('./options');
-const linter = require('./linter');
-const { arrify, parseFiles, parseFoldersToGlobs } = require('./utils');
+const linter = require("./linter");
+const { getOptions } = require("./options");
+const { arrify, parseFiles, parseFoldersToGlobs } = require("./utils");
 
 /** @typedef {import('webpack').Compiler} Compiler */
 /** @typedef {import('webpack').Module} Module */
 /** @typedef {import('webpack').NormalModule} NormalModule */
 /** @typedef {import('./options').Options} Options */
 
-const ESLINT_PLUGIN = 'ESLintWebpackPlugin';
-const DEFAULT_FOLDER_TO_EXCLUDE = '**/node_modules/**';
+const ESLINT_PLUGIN = "ESLintWebpackPlugin";
+const DEFAULT_FOLDER_TO_EXCLUDE = "**/node_modules/**";
 
 let compilerId = 0;
 
 class ESLintWebpackPlugin {
   /**
-   * @param {Options} options
+   * @param {Options=} options options
    */
   constructor(options = {}) {
     this.key = ESLINT_PLUGIN;
@@ -27,7 +27,7 @@ class ESLintWebpackPlugin {
   }
 
   /**
-   * @param {Compiler} compiler
+   * @param {Compiler} compiler compiler
    * @returns {void}
    */
   apply(compiler) {
@@ -49,7 +49,7 @@ class ESLintWebpackPlugin {
       exclude: excludedFiles,
       resourceQueryExclude: excludedResourceQueries,
       extensions: arrify(this.options.extensions),
-      files: parseFiles(this.options.files || '', this.getContext(compiler)),
+      files: parseFiles(this.options.files || "", this.getContext(compiler)),
     };
 
     const foldersToExclude = this.options.exclude
@@ -61,16 +61,17 @@ class ESLintWebpackPlugin {
     // If `lintDirtyModulesOnly` is disabled,
     // execute the linter on the build
     if (!this.options.lintDirtyModulesOnly) {
-      compiler.hooks.run.tapPromise(this.key, (c) =>
-        this.run(c, options, wanted, exclude),
+      compiler.hooks.run.tapPromise(this.key, (compiler) =>
+        this.run(compiler, options, wanted, exclude),
       );
     }
 
     let hasCompilerRunByDirtyModule = this.options.lintDirtyModulesOnly;
 
-    compiler.hooks.watchRun.tapPromise(this.key, (c) => {
-      if (!hasCompilerRunByDirtyModule)
-        return this.run(c, options, wanted, exclude);
+    compiler.hooks.watchRun.tapPromise(this.key, (compiler) => {
+      if (!hasCompilerRunByDirtyModule) {
+        return this.run(compiler, options, wanted, exclude);
+      }
 
       hasCompilerRunByDirtyModule = false;
 
@@ -79,17 +80,19 @@ class ESLintWebpackPlugin {
   }
 
   /**
-   * @param {Compiler} compiler
-   * @param {Omit<Options, 'resourceQueryExclude'> & {resourceQueryExclude: RegExp[]}} options
-   * @param {string[]} wanted
-   * @param {string[]} exclude
+   * @param {Compiler} compiler compiler
+   * @param {Omit<Options, 'resourceQueryExclude'> & { resourceQueryExclude: RegExp[] }} options options
+   * @param {string[]} wanted wanted files
+   * @param {string[]} exclude excluded files
    */
   async run(compiler, options, wanted, exclude) {
-    const isCompilerHooked = compiler.hooks.compilation.taps.find(
-      ({ name }) => name === this.key,
-    );
-
-    if (isCompilerHooked) return;
+    // Do not re-hook
+    /* istanbul ignore if */
+    if (
+      compiler.hooks.thisCompilation.taps.some(({ name }) => name === this.key)
+    ) {
+      return;
+    }
 
     compiler.hooks.compilation.tap(this.key, async (compilation) => {
       /** @type {import('./linter').Linter} */
@@ -105,30 +108,23 @@ class ESLintWebpackPlugin {
           options,
           compilation,
         ));
-      } catch (e) {
-        compilation.errors.push(e);
+      } catch (err) {
+        compilation.errors.push(err);
         return;
       }
 
       /** @type {string[]} */
       const files = [];
 
-      // Add the file to be linted
-      compilation.hooks.succeedModule.tap(this.key, addFile);
-
-      if (!this.options.lintDirtyModulesOnly) {
-        compilation.hooks.stillValidModule.tap(this.key, addFile);
-      }
-
       /**
-       * @param {Module} module
+       * @param {Module} module module
        */
       function addFile(module) {
         const { resource } = /** @type {NormalModule} */ (module);
 
         if (!resource) return;
 
-        const [file, query] = resource.split('?');
+        const [file, query] = resource.split("?");
         const isFileNotListed = file && !files.includes(file);
         const isFileWanted =
           isMatch(file, wanted, { dot: true }) &&
@@ -144,6 +140,13 @@ class ESLintWebpackPlugin {
         }
       }
 
+      // Add the file to be linted
+      compilation.hooks.succeedModule.tap(this.key, addFile);
+
+      if (!this.options.lintDirtyModulesOnly) {
+        compilation.hooks.stillValidModule.tap(this.key, addFile);
+      }
+
       // Lint all files added
       compilation.hooks.finishModules.tap(this.key, () => {
         if (files.length > 0 && threads <= 1) lint(files);
@@ -152,16 +155,14 @@ class ESLintWebpackPlugin {
       // await and interpret results
       compilation.hooks.additionalAssets.tapAsync(
         this.key,
-        async function (callback) {
+        async (callback) => {
           const { errors, warnings, generateReportAsset } = await report();
 
           if (warnings) {
-            // @ts-ignore
             compilation.warnings.push(warnings);
           }
 
           if (errors) {
-            // @ts-ignore
             compilation.errors.push(errors);
           }
 
@@ -182,9 +183,8 @@ class ESLintWebpackPlugin {
   }
 
   /**
-   *
-   * @param {Compiler} compiler
-   * @returns {string}
+   * @param {Compiler} compiler compiler
+   * @returns {string} context
    */
   getContext(compiler) {
     const compilerContext = String(compiler.options.context);

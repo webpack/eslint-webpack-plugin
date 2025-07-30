@@ -1,6 +1,6 @@
-export type ESLint = import('eslint').ESLint;
-export type LintResult = import('eslint').ESLint.LintResult;
-export type Options = import('./options').Options;
+export type ESLint = import("eslint").ESLint;
+export type LintResult = import("eslint").ESLint.LintResult;
+export type Options = import("./options").Options;
 export type AsyncTask = () => Promise<void>;
 export type LintTask = (files: string | string[]) => Promise<LintResult[]>;
 export type Linter = {
@@ -44,4 +44,4 @@ export function getESLint(
   key: string | undefined,
   { threads, ...options }: Options,
 ): Promise<Linter>;
-import { Worker as JestWorker } from 'jest-worker';
+import { Worker as JestWorker } from "jest-worker";

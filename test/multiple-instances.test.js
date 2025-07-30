@@ -1,23 +1,23 @@
-import ESLintPlugin from '../src';
+import ESLintPlugin from "../src";
 
-import pack from './utils/pack';
+import pack from "./utils/pack";
 
-describe('multiple instances', () => {
+describe("multiple instances", () => {
   it("should don't fail", async () => {
     const compiler = pack(
-      'multiple',
+      "multiple",
       {},
       {
         plugins: [
           new ESLintPlugin({
-            configType: 'eslintrc',
+            configType: "eslintrc",
             ignore: false,
-            exclude: 'error.js',
+            exclude: "error.js",
           }),
           new ESLintPlugin({
-            configType: 'eslintrc',
+            configType: "eslintrc",
             ignore: false,
-            exclude: 'error.js',
+            exclude: "error.js",
           }),
         ],
       },
@@ -28,49 +28,49 @@ describe('multiple instances', () => {
     expect(stats.hasErrors()).toBe(false);
   });
 
-  it('should fail on first instance', async () => {
+  it("should fail on first instance", async () => {
     const compiler = pack(
-      'multiple',
+      "multiple",
       {},
       {
         plugins: [
           new ESLintPlugin({
-            configType: 'eslintrc',
+            configType: "eslintrc",
             ignore: false,
-            exclude: 'good.js',
+            exclude: "good.js",
           }),
           new ESLintPlugin({
-            configType: 'eslintrc',
+            configType: "eslintrc",
             ignore: false,
-            exclude: 'error.js',
+            exclude: "error.js",
           }),
         ],
       },
     );
 
-    await expect(compiler.runAsync()).rejects.toThrow();
+    await expect(compiler.runAsync()).rejects.toThrow("something");
   });
 
-  it('should fail on second instance', async () => {
+  it("should fail on second instance", async () => {
     const compiler = pack(
-      'multiple',
+      "multiple",
       {},
       {
         plugins: [
           new ESLintPlugin({
-            configType: 'eslintrc',
+            configType: "eslintrc",
             ignore: false,
-            exclude: 'error.js',
+            exclude: "error.js",
           }),
           new ESLintPlugin({
-            configType: 'eslintrc',
+            configType: "eslintrc",
             ignore: false,
-            exclude: 'good.js',
+            exclude: "good.js",
           }),
         ],
       },
     );
 
-    await expect(compiler.runAsync()).rejects.toThrow();
+    await expect(compiler.runAsync()).rejects.toThrow("something");
   });
 });

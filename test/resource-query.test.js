@@ -1,15 +1,15 @@
-import pack from './utils/pack';
+import pack from "./utils/pack";
 
-describe('resource-query', () => {
-  it('should exclude the match resource query', async () => {
+describe("resource-query", () => {
+  it("should exclude the match resource query", async () => {
     const compiler = pack(
-      'resource-query',
+      "resource-query",
       {
         resourceQueryExclude: /media/,
-        extensions: ['.js', '.ts'],
+        extensions: [".js", ".ts"],
       },
       {
-        module: { rules: [{ resourceQuery: /media/, type: 'asset/source' }] },
+        module: { rules: [{ resourceQuery: /media/, type: "asset/source" }] },
       },
     );
 

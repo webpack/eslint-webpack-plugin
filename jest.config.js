@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverage: true,
-  testEnvironment: 'node',
+  testEnvironment: "node",
   testTimeout: 60000,
-  transformIgnorePatterns: ['node_modules/(?!(arrify)/)'],
+  transformIgnorePatterns: ["node_modules/(?!(arrify)/)"],
 };
