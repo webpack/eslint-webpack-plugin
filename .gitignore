@@ -9,7 +9,7 @@ yarn-debug.log*
 /local
 /reports
 /node_modules
-/test/output
+/test/outputs
 
 .DS_Store
 Thumbs.db
