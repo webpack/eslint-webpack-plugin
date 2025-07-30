@@ -10,7 +10,7 @@ jest.mock("fs", () => ({
   },
 }));
 
-describe("utils test", () => {
+describe("utils", () => {
   it("parseFiles should return relative files from context", () => {
     expect(
       parseFiles(
