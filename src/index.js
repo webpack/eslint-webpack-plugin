@@ -87,12 +87,11 @@ class ESLintWebpackPlugin {
    */
   async run(compiler, options, wanted, exclude) {
     // Do not re-hook
-    /* istanbul ignore if */
-    if (
-      compiler.hooks.thisCompilation.taps.some(({ name }) => name === this.key)
-    ) {
-      return;
-    }
+    const isCompilerHooked = compiler.hooks.compilation.taps.find(
+      ({ name }) => name === this.key,
+    );
+
+    if (isCompilerHooked) return;
 
     compiler.hooks.compilation.tap(this.key, async (compilation) => {
       /** @type {import('./linter').Linter} */
