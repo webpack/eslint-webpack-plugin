@@ -1,4 +1,5 @@
 import { join } from "node:path";
+import eslint from "eslint";
 
 import ESLintPlugin from "../../src";
 
@@ -14,13 +15,14 @@ export default (entry, pluginConf = {}, webpackConf = {}) => {
     },
     plugins: [
       new ESLintPlugin({
-        overrideConfigFile: join(
-          testDir,
-          "./config-for-tests/eslint.config.mjs",
-        ),
+        configType:
+          Number.parseFloat(eslint.ESLint.version) >= 9 ? "flat" : "eslintrc",
+        overrideConfigFile:
+          Number.parseFloat(eslint.ESLint.version) >= 9
+            ? join(testDir, "./config-for-tests/eslint.config.mjs")
+            : join(testDir, "./config-for-tests/.eslintrc.js"),
         // this disables the use of .eslintignore, since it contains the fixtures
         // folder to skip it on the global linting, but here we want the opposite
-        // (we only use .eslintignore on the test that checks this)
         ignore: false,
         // TODO: update tests to run both states: test.each([[{threads: false}], [{threads: true}]])('it should...', async ({threads}) => {...})
         threads: true,
