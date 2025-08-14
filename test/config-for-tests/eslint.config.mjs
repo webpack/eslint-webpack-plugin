@@ -1,5 +1,5 @@
 import { defineConfig } from "eslint/config";
-// eslint-disable-next-line n/no-extraneous-import, import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-extraneous-dependencies
 import globals from "globals";
 
 export default defineConfig({
@@ -14,6 +14,6 @@ export default defineConfig({
     "no-undef": "error",
     "no-var": "error",
     "no-unused-vars": "error",
-    "prefer-const": "error"
-  }
+    "prefer-const": "error",
+  },
 });

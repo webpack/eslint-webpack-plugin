@@ -10,12 +10,10 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
-            configType: "eslintrc",
             ignore: false,
             exclude: "error.js",
           }),
           new ESLintPlugin({
-            configType: "eslintrc",
             ignore: false,
             exclude: "error.js",
           }),
@@ -35,12 +33,10 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
-            configType: "eslintrc",
             ignore: false,
             exclude: "good.js",
           }),
           new ESLintPlugin({
-            configType: "eslintrc",
             ignore: false,
             exclude: "error.js",
           }),
@@ -48,7 +44,7 @@ describe("multiple instances", () => {
       },
     );
 
-    await expect(compiler.runAsync()).rejects.toThrow("something");
+    await expect(compiler.runAsync()).rejects.toThrow("error.js");
   });
 
   it("should fail on second instance", async () => {
@@ -58,12 +54,10 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
-            configType: "eslintrc",
             ignore: false,
             exclude: "error.js",
           }),
           new ESLintPlugin({
-            configType: "eslintrc",
             ignore: false,
             exclude: "good.js",
           }),
@@ -71,6 +65,6 @@ describe("multiple instances", () => {
       },
     );
 
-    await expect(compiler.runAsync()).rejects.toThrow("something");
+    await expect(compiler.runAsync()).rejects.toThrow("error.js");
   });
 });

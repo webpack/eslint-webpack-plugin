@@ -4,7 +4,10 @@ import pack from "./utils/pack";
 
 describe("eslintignore", () => {
   it("should ignores files present in .eslintignore", async () => {
-    const compiler = pack("ignore", { ignore: true });
+    const compiler = pack("ignore", {
+      ignore: true,
+      ignorePatterns: ["**/ignore.js"],
+    });
 
     const stats = await compiler.runAsync();
     expect(stats.hasWarnings()).toBe(false);

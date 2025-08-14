@@ -1,2 +1,2 @@
-require('./good');
-require('./error');
+require("./good");
+require("./error");

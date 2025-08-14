@@ -4,11 +4,20 @@ describe("eslint lint", () => {
   const mockLintFiles = jest.fn().mockReturnValue([]);
 
   beforeAll(() => {
-    jest.mock("eslint", () => ({
-      ESLint: function ESLint() {
+    jest.mock("eslint", () => {
+      function ESLint() {
         this.lintFiles = mockLintFiles;
-      },
-    }));
+      }
+
+      ESLint.version = "9.0.0";
+
+      return {
+        ESLint,
+        async loadESLint() {
+          return ESLint;
+        },
+      };
+    });
   });
 
   beforeEach(() => {
