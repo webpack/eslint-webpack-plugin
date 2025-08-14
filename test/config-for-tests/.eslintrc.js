@@ -1,15 +1,17 @@
 module.exports = {
-  root: true,
+  ignorePatterns: ["**/ignore.js"],
   globals: {
     __dirname: "readonly",
     __filename: "readonly",
     exports: "writable",
     module: "readonly",
     require: "readonly",
+    console: "readonly",
   },
   parserOptions: {
     ecmaVersion: 2018,
     env: {
+      browser: true,
       node: true,
       es6: true,
     },

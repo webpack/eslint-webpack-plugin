@@ -15,6 +15,8 @@ export default (entry, pluginConf = {}, webpackConf = {}) => {
     },
     plugins: [
       new ESLintPlugin({
+        // Do not cache for tests
+        cache: false,
         configType:
           Number.parseFloat(eslint.ESLint.version) >= 9 ? "flat" : "eslintrc",
         overrideConfigFile:

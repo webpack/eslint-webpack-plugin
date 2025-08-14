@@ -184,7 +184,7 @@ async function linter(key, options, compilation) {
   /** @type {ESLint} */
   let eslint;
 
-  /** @type {(files: string|string[]) => Promise<LintResult[]>} */
+  /** @type {(files: string | string[]) => Promise<LintResult[]>} */
   let lintFiles;
 
   /** @type {() => Promise<void>} */

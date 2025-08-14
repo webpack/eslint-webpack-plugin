@@ -1,8 +1,14 @@
 import { join } from "node:path";
-
+import eslint from "eslint";
 import ESLintPlugin from "../src";
-
 import pack from "./utils/pack";
+
+const configType =
+  Number.parseFloat(eslint.ESLint.version) >= 9 ? "flat" : "eslintrc";
+const config =
+  Number.parseFloat(eslint.ESLint.version) >= 9
+    ? join(__dirname, "./config-for-tests/eslint.config.mjs")
+    : join(__dirname, "./config-for-tests/.eslintrc.js");
 
 describe("multiple instances", () => {
   it("should don't fail", async () => {
@@ -12,18 +18,14 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
-            overrideConfigFile: join(
-              __dirname,
-              "./config-for-tests/eslint.config.mjs",
-            ),
+            configType,
+            overrideConfigFile: config,
             ignore: false,
             exclude: "error.js",
           }),
           new ESLintPlugin({
-            overrideConfigFile: join(
-              __dirname,
-              "./config-for-tests/eslint.config.mjs",
-            ),
+            configType,
+            overrideConfigFile: config,
             ignore: false,
             exclude: "error.js",
           }),
@@ -43,18 +45,14 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
-            overrideConfigFile: join(
-              __dirname,
-              "./config-for-tests/eslint.config.mjs",
-            ),
+            configType,
+            overrideConfigFile: config,
             ignore: false,
             exclude: "good.js",
           }),
           new ESLintPlugin({
-            overrideConfigFile: join(
-              __dirname,
-              "./config-for-tests/eslint.config.mjs",
-            ),
+            configType,
+            overrideConfigFile: config,
             ignore: false,
             exclude: "error.js",
           }),
@@ -72,18 +70,14 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
-            overrideConfigFile: join(
-              __dirname,
-              "./config-for-tests/eslint.config.mjs",
-            ),
+            configType,
+            overrideConfigFile: config,
             ignore: false,
             exclude: "error.js",
           }),
           new ESLintPlugin({
-            overrideConfigFile: join(
-              __dirname,
-              "./config-for-tests/eslint.config.mjs",
-            ),
+            configType,
+            overrideConfigFile: config,
             ignore: false,
             exclude: "good.js",
           }),
