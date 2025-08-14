@@ -1,3 +1,5 @@
+import { join } from "node:path";
+
 import ESLintPlugin from "../src";
 
 import pack from "./utils/pack";
@@ -10,10 +12,18 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
+            overrideConfigFile: join(
+              __dirname,
+              "./config-for-tests/eslint.config.mjs",
+            ),
             ignore: false,
             exclude: "error.js",
           }),
           new ESLintPlugin({
+            overrideConfigFile: join(
+              __dirname,
+              "./config-for-tests/eslint.config.mjs",
+            ),
             ignore: false,
             exclude: "error.js",
           }),
@@ -33,10 +43,18 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
+            overrideConfigFile: join(
+              __dirname,
+              "./config-for-tests/eslint.config.mjs",
+            ),
             ignore: false,
             exclude: "good.js",
           }),
           new ESLintPlugin({
+            overrideConfigFile: join(
+              __dirname,
+              "./config-for-tests/eslint.config.mjs",
+            ),
             ignore: false,
             exclude: "error.js",
           }),
@@ -54,10 +72,18 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
+            overrideConfigFile: join(
+              __dirname,
+              "./config-for-tests/eslint.config.mjs",
+            ),
             ignore: false,
             exclude: "error.js",
           }),
           new ESLintPlugin({
+            overrideConfigFile: join(
+              __dirname,
+              "./config-for-tests/eslint.config.mjs",
+            ),
             ignore: false,
             exclude: "good.js",
           }),
