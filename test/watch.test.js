@@ -48,7 +48,7 @@ describe("watch", () => {
       const [{ message }] = errors;
       expect(stats.hasErrors()).toBe(true);
       expect(message).toEqual(expect.stringMatching("prefer-const"));
-      done();
+      done(err);
     }
 
     function thirdPass(err, stats) {
