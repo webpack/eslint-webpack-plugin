@@ -1,14 +1,14 @@
-import pack from './utils/pack';
+import pack from "./utils/pack";
 
-describe('query', () => {
-  it('should correctly resolve file despite query path', async () => {
+describe("query", () => {
+  it("should correctly resolve file despite query path", async () => {
     const compiler = pack(
-      'query',
+      "query",
       {},
       {
         resolve: {
           alias: {
-            'alias-ignore': false,
+            "alias-ignore": false,
           },
         },
       },

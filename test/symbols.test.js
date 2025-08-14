@@ -1,17 +1,17 @@
-import { join } from 'path';
+import { join } from "node:path";
 
-import pack from './utils/pack';
+import pack from "./utils/pack";
 
-describe('symbols', () => {
+describe("symbols", () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
 
-  it('should return error', async () => {
+  it("should return error", async () => {
     const compiler = pack(
-      'symbols',
+      "symbols",
       {},
-      { context: join(__dirname, 'fixtures/[symbols]') },
+      { context: join(__dirname, "fixtures/[symbols]") },
     );
 
     const stats = await compiler.runAsync();

@@ -1,11 +1,11 @@
 class ESLintError extends Error {
   /**
-   * @param {string=} messages
+   * @param {string=} messages messages
    */
   constructor(messages) {
     super(`[eslint] ${messages}`);
-    this.name = 'ESLintError';
-    this.stack = '';
+    this.name = "ESLintError";
+    this.stack = "";
   }
 }
 

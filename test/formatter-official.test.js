@@ -1,8 +1,8 @@
-import pack from './utils/pack';
+import pack from "./utils/pack";
 
-describe('formatter official', () => {
-  it('should use official formatter', async () => {
-    const compiler = pack('error', { formatter: 'json' });
+describe("formatter official", () => {
+  it("should use official formatter", async () => {
+    const compiler = pack("error", { formatter: "json" });
 
     const stats = await compiler.runAsync();
     expect(stats.hasWarnings()).toBe(false);

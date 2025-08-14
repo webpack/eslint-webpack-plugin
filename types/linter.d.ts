@@ -1,9 +1,9 @@
 export = linter;
 /**
- * @param {string|undefined} key
- * @param {Options} options
- * @param {Compilation} compilation
- * @returns {Promise<{lint: Linter, report: Reporter, threads: number}>}
+ * @param {string | undefined} key a cache key
+ * @param {Options} options options
+ * @param {Compilation} compilation compilation
+ * @returns {Promise<{lint: Linter, report: Reporter, threads: number}>} linter with additional functions
  */
 declare function linter(
   key: string | undefined,
@@ -30,13 +30,13 @@ declare namespace linter {
     LintResultMap,
   };
 }
-type ESLint = import('eslint').ESLint;
-type Formatter = import('eslint').ESLint.Formatter;
-type LintResult = import('eslint').ESLint.LintResult;
-type Compiler = import('webpack').Compiler;
-type Compilation = import('webpack').Compilation;
-type Options = import('./options').Options;
-type FormatterFunction = import('./options').FormatterFunction;
+type ESLint = import("eslint").ESLint;
+type Formatter = import("eslint").ESLint.Formatter;
+type LintResult = import("eslint").ESLint.LintResult;
+type Compiler = import("webpack").Compiler;
+type Compilation = import("webpack").Compilation;
+type Options = import("./options").Options;
+type FormatterFunction = import("./options").FormatterFunction;
 type GenerateReport = (compilation: Compilation) => Promise<void>;
 type Report = {
   errors?: ESLintError;
@@ -48,4 +48,4 @@ type Linter = (files: string | string[]) => void;
 type LintResultMap = {
   [files: string]: LintResult;
 };
-import ESLintError = require('./ESLintError');
+import ESLintError = require("./ESLintError");

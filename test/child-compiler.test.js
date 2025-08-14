@@ -1,8 +1,8 @@
-import webpack from 'webpack';
+import webpack from "webpack";
 
-import conf from './utils/conf';
+import conf from "./utils/conf";
 
-const PLUGIN_NAME = 'ChildPlugin';
+const PLUGIN_NAME = "ChildPlugin";
 class ChildPlugin {
   constructor(options) {
     this.options = webpack.config.getNormalizedWebpackOptions(options);
@@ -23,13 +23,13 @@ class ChildPlugin {
   }
 }
 
-describe('child compiler', () => {
-  it('should have linting process', (done) => {
-    const config = conf('good', { threads: false });
+describe("child compiler", () => {
+  it("should have linting process", (done) => {
+    const config = conf("good", { threads: false });
     config.plugins.push(
       new ChildPlugin({
         entry: {
-          child: './child-entry',
+          child: "./child-entry",
         },
       }),
     );

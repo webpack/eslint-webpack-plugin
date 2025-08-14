@@ -1,21 +1,21 @@
-import { join } from 'path';
+import { join } from "node:path";
 
-import { copySync, removeSync } from 'fs-extra';
-import chokidar from 'chokidar';
+import { watch } from "chokidar";
+import { copySync, removeSync } from "fs-extra";
 
-import pack from './utils/pack';
+import pack from "./utils/pack";
 
-describe('autofix stop', () => {
-  const entry = join(__dirname, 'fixtures/nonfixable-clone.js');
+describe("autofix stop", () => {
+  const entry = join(__dirname, "fixtures/nonfixable-clone.js");
 
   let changed = false;
   let watcher;
 
   beforeAll(() => {
-    copySync(join(__dirname, 'fixtures/nonfixable.js'), entry);
+    copySync(join(__dirname, "fixtures/nonfixable.js"), entry);
 
-    watcher = chokidar.watch(entry);
-    watcher.on('change', () => {
+    watcher = watch(entry);
+    watcher.on("change", () => {
       changed = true;
     });
   });
@@ -25,8 +25,8 @@ describe('autofix stop', () => {
     removeSync(entry);
   });
 
-  it('should not change file if there are no fixable errors/warnings', async () => {
-    const compiler = pack('nonfixable-clone', { fix: true });
+  it("should not change file if there are no fixable errors/warnings", async () => {
+    const compiler = pack("nonfixable-clone", { fix: true });
 
     await compiler.runAsync();
     expect(changed).toBe(false);
