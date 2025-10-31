@@ -12,7 +12,7 @@
 
 # eslint-webpack-plugin
 
-> This version of eslint-webpack-plugin only supports webpack 5. For the webpack 4, see the [2.x branch](https://github.com/webpack-contrib/eslint-webpack-plugin/tree/2.x).
+> This version of eslint-webpack-plugin only supports webpack 5. For the webpack 4, see the [2.x branch](https://github.com/webpack/eslint-webpack-plugin/tree/2.x).
 
 This plugin uses [`ESlint`](https://eslint.org/) to find and fix problems in your JavaScript code during the Webpack build process.
 
@@ -371,10 +371,10 @@ If you're new here, please take a moment to review our contributing guidelines.
 [npm-url]: https://npmjs.com/package/eslint-webpack-plugin
 [node]: https://img.shields.io/node/v/eslint-webpack-plugin.svg
 [node-url]: https://nodejs.org
-[tests]: https://github.com/webpack-contrib/eslint-webpack-plugin/workflows/eslint-webpack-plugin/badge.svg
-[tests-url]: https://github.com/webpack-contrib/eslint-webpack-plugin/actions
-[cover]: https://codecov.io/gh/webpack-contrib/eslint-webpack-plugin/branch/master/graph/badge.svg
-[cover-url]: https://codecov.io/gh/webpack-contrib/eslint-webpack-plugin
+[tests]: https://github.com/webpack/eslint-webpack-plugin/workflows/eslint-webpack-plugin/badge.svg
+[tests-url]: https://github.com/webpack/eslint-webpack-plugin/actions
+[cover]: https://codecov.io/gh/webpack/eslint-webpack-plugin/branch/main/graph/badge.svg
+[cover-url]: https://codecov.io/gh/webpack/eslint-webpack-plugin
 [discussion]: https://img.shields.io/github/discussions/webpack/webpack
 [discussion-url]: https://github.com/webpack/webpack/discussions
 [size]: https://packagephobia.now.sh/badge?p=eslint-webpack-plugin
