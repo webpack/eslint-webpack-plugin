@@ -361,7 +361,7 @@ We welcome all contributions!
 
 If you're new here, please take a moment to review our contributing guidelines.
 
-[CONTRIBUTING](./.github/CONTRIBUTING.md)
+[CONTRIBUTING](https://github.com/webpack/eslint-webpack-plugin?tab=contributing-ov-file#contributing)
 
 ## License
 
