@@ -1,6 +1,7 @@
 const { dirname, isAbsolute, join } = require("node:path");
 
 const ESLintError = require("./ESLintError");
+const applySuppressions = require("./applySuppressions");
 const { getESLint } = require("./getESLint");
 const { arrify } = require("./utils");
 
@@ -231,6 +232,9 @@ async function linter(key, options, compilation) {
     );
 
     await cleanup();
+
+    // Apply suppressions from eslint-suppressions.json if available
+    results = await applySuppressions(results, options);
 
     for (const result of results) {
       crossRunResultStorage[result.filePath] = result;

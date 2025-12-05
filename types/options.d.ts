@@ -80,6 +80,10 @@ export type PluginOptions = {
    * config type
    */
   configType?: string | undefined;
+  /**
+   * path to suppressions file (relative to options.context)
+   */
+  suppressionsLocation?: string | undefined;
 };
 export type Options = PluginOptions & ESLintOptions;
 /**
@@ -118,6 +122,7 @@ export function getESLintOptions(loaderOptions: Options): ESLintOptions;
  * @property {number | boolean=} threads number of worker threads
  * @property {RegExp | RegExp[]=} resourceQueryExclude Specify the resource query to exclude
  * @property {string=} configType config type
+ * @property {string=} suppressionsLocation path to suppressions file (relative to options.context)
  */
 /** @typedef {PluginOptions & ESLintOptions} Options */
 /**

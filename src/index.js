@@ -35,10 +35,8 @@ class ESLintWebpackPlugin {
     // this differentiates one from the other when being cached.
     this.key = compiler.name || `${this.key}_${(compilerId += 1)}`;
 
-    const excludedFiles = parseFiles(
-      this.options.exclude || [],
-      this.getContext(compiler),
-    );
+    const context = this.getContext(compiler);
+    const excludedFiles = parseFiles(this.options.exclude || [], context);
     const resourceQueries = arrify(this.options.resourceQueryExclude || []);
     const excludedResourceQueries = resourceQueries.map((item) =>
       item instanceof RegExp ? item : new RegExp(item),
@@ -46,10 +44,11 @@ class ESLintWebpackPlugin {
 
     const options = {
       ...this.options,
+      context,
       exclude: excludedFiles,
       resourceQueryExclude: excludedResourceQueries,
       extensions: arrify(this.options.extensions),
-      files: parseFiles(this.options.files || "", this.getContext(compiler)),
+      files: parseFiles(this.options.files || "", context),
     };
 
     const foldersToExclude = this.options.exclude

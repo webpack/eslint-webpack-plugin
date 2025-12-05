@@ -87,6 +87,10 @@
     "threads": {
       "description": "Default is false. Set to true for an auto-selected pool size based on number of cpus. Set to a number greater than 1 to set an explicit pool size. Set to false, 1, or less to disable and only run in main process.",
       "anyOf": [{ "type": "number" }, { "type": "boolean" }]
+    },
+    "suppressionsLocation": {
+      "description": "Path to ESLint suppressions file. Must be relative to `options.context`. Defaults to 'eslint-suppressions.json'. Suppressions are applied if the file exists and ESLint >= 9.24.0 is installed.",
+      "type": "string"
     }
   }
 }
