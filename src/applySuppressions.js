@@ -14,8 +14,9 @@ const { dirname, isAbsolute, resolve } = require("node:path");
  * @returns {SuppressionsService | null} SuppressionsService instance or null
  */
 function getSuppressionsService() {
-  // ESLint doesn't export SuppressionsService in package.json exports,
-  // so we need to resolve the path directly
+  // TODO: Migrate to official API once available, ESLint doesn't export SuppressionsService yet.
+  // Upstream issue: https://github.com/eslint/eslint/issues/19603
+  // RFC (adds `applySuppressions` to ESLint constructor): https://github.com/eslint/rfcs/pull/142
   const eslintPath = require.resolve("eslint");
   const eslintDir = eslintPath.replace(/\/lib\/api\.js$/, "");
 
