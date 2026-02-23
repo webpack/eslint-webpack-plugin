@@ -1,3 +1,4 @@
+// eslint-disable-next-line jsdoc/reject-any-type
 /** @typedef {any} EXPECTED_ANY */
 
 const { statSync } = require("node:fs");
