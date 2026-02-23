@@ -32,7 +32,7 @@
     "build:code": "cross-env NODE_ENV=production babel src -d dist --copy-files",
     "build": "npm-run-all -p \"build:**\"",
     "commitlint": "commitlint --from=main",
-    "security": "npm audit",
+    "security": "npm audit --omit=dev",
     "lint:prettier": "prettier -w --list-different .",
     "lint:code": "eslint --cache .",
     "lint:spelling": "cspell \"**/*.*\"",
