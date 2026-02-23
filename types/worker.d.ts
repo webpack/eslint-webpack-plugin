@@ -3,7 +3,7 @@ export type ESLintOptions = import("eslint").ESLint.Options;
 export type LintResult = import("eslint").ESLint.LintResult;
 export type ESLintClass = {
   new (arg0: ESLintOptions): ESLint;
-  outputFixes: (arg0: LintResult[]) => void;
+  outputFixes: (arg0: LintResult[]) => Promise<void>;
 };
 /**
  * @param {string | string[]} files files

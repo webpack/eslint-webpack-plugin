@@ -1,6 +1,4 @@
 import { join } from "node:path";
-import eslint from "eslint";
-
 import ESLintPlugin from "../../src";
 
 export default (entry, pluginConf = {}, webpackConf = {}) => {
@@ -17,12 +15,10 @@ export default (entry, pluginConf = {}, webpackConf = {}) => {
       new ESLintPlugin({
         // Do not cache for tests
         cache: false,
-        configType:
-          Number.parseFloat(eslint.ESLint.version) >= 9 ? "flat" : "eslintrc",
-        overrideConfigFile:
-          Number.parseFloat(eslint.ESLint.version) >= 9
-            ? join(testDir, "./config-for-tests/eslint.config.mjs")
-            : join(testDir, "./config-for-tests/.eslintrc.js"),
+        overrideConfigFile: join(
+          testDir,
+          "./config-for-tests/eslint.config.mjs",
+        ),
         // this disables the use of .eslintignore, since it contains the fixtures
         // folder to skip it on the global linting, but here we want the opposite
         ignore: false,
