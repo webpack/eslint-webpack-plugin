@@ -10,13 +10,13 @@ const { lintFiles, setup } = require("./worker");
 /** @type {{ [key: string]: Linter }} */
 const cache = {};
 
-/** @typedef {import('eslint').ESLint} ESLint */
-/** @typedef {import('eslint').ESLint.LintResult} LintResult */
-/** @typedef {import('./options').Options} Options */
+/** @typedef {import("eslint").ESLint} ESLint */
+/** @typedef {import("eslint").ESLint.LintResult} LintResult */
+/** @typedef {import("./options").Options} Options */
 /** @typedef {() => Promise<void>} AsyncTask */
-/** @typedef {(files: string|string[]) => Promise<LintResult[]>} LintTask */
-/** @typedef {{threads: number, eslint: ESLint, lintFiles: LintTask, cleanup: AsyncTask}} Linter */
-/** @typedef {JestWorker & {lintFiles: LintTask}} Worker */
+/** @typedef {(files: string | string[]) => Promise<LintResult[]>} LintTask */
+/** @typedef {{ threads: number, eslint: ESLint, lintFiles: LintTask, cleanup: AsyncTask }} Linter */
+/** @typedef {JestWorker & { lintFiles: LintTask }} Worker */
 
 /**
  * @param {Options} options options

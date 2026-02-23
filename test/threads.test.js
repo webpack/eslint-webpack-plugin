@@ -1,4 +1,3 @@
-/* eslint-env jest */
 import { join } from "node:path";
 import eslint from "eslint";
 import { loadESLint, loadESLintThreaded } from "../src/getESLint";

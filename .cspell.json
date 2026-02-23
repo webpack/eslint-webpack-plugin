@@ -18,7 +18,7 @@
     "CHANGELOG.md",
     "package.json",
     "coverage",
-    "/test/output",
+    "/test/outputs",
     "dist/**",
     "**/__snapshots__/**",
     "package-lock.json",

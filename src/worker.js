@@ -1,7 +1,7 @@
-/** @typedef {import('eslint').ESLint} ESLint */
-/** @typedef {import('eslint').ESLint.Options} ESLintOptions */
-/** @typedef {import('eslint').ESLint.LintResult} LintResult */
-/** @typedef {{new (arg0: ESLintOptions): ESLint; outputFixes: (arg0: LintResult[]) => any;}} ESLintClass */
+/** @typedef {import("eslint").ESLint} ESLint */
+/** @typedef {import("eslint").ESLint.Options} ESLintOptions */
+/** @typedef {import("eslint").ESLint.LintResult} LintResult */
+/** @typedef {{ new (arg0: ESLintOptions): ESLint, outputFixes: (arg0: LintResult[]) => any }} ESLintClass */
 
 /** @type {ESLintClass} */
 let ESLint;

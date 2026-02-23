@@ -1,4 +1,3 @@
-// eslint-disable-next-line jsdoc/no-restricted-syntax
 /** @typedef {any} EXPECTED_ANY */
 
 const { statSync } = require("node:fs");

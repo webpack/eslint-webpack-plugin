@@ -61,7 +61,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node-version: [18.x, 20.x, 22.x, 24.x]
-        eslint-version: [8.x, 9.x]
+        eslint-version: [8.x, 9.x, 10.x]
         webpack-version: [latest]
 
     runs-on: ${{ matrix.os }}
@@ -77,7 +77,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci

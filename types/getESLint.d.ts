@@ -21,13 +21,13 @@ export function getESLint(
   key: string | undefined,
   { threads, ...options }: Options,
 ): Promise<Linter>;
-/** @typedef {import('eslint').ESLint} ESLint */
-/** @typedef {import('eslint').ESLint.LintResult} LintResult */
-/** @typedef {import('./options').Options} Options */
+/** @typedef {import("eslint").ESLint} ESLint */
+/** @typedef {import("eslint").ESLint.LintResult} LintResult */
+/** @typedef {import("./options").Options} Options */
 /** @typedef {() => Promise<void>} AsyncTask */
-/** @typedef {(files: string|string[]) => Promise<LintResult[]>} LintTask */
-/** @typedef {{threads: number, eslint: ESLint, lintFiles: LintTask, cleanup: AsyncTask}} Linter */
-/** @typedef {JestWorker & {lintFiles: LintTask}} Worker */
+/** @typedef {(files: string | string[]) => Promise<LintResult[]>} LintTask */
+/** @typedef {{ threads: number, eslint: ESLint, lintFiles: LintTask, cleanup: AsyncTask }} Linter */
+/** @typedef {JestWorker & { lintFiles: LintTask }} Worker */
 /**
  * @param {Options} options options
  * @returns {Promise<Linter>} linter
