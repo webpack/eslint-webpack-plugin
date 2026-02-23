@@ -91,7 +91,7 @@
     "prettier": "^3.8.1",
     "standard-version": "^9.5.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.0",
+    "typescript-eslint": "^8.56.1",
     "webpack": "^5.105.2"
   },
   "peerDependencies": {
