@@ -20,6 +20,7 @@ describe("Threading", () => {
 
   it("threaded should lint files", async () => {
     const threaded = await loadESLintThreaded("bar", 1, {
+      configType: "flat",
       ignore: false,
       overrideConfigFile: join(
         __dirname,

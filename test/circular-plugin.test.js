@@ -18,7 +18,6 @@ describe("circular plugin", () => {
     });
 
     const loaderOptions = {
-      configType: "flat",
       overrideConfig: {
         plugins: { plugin },
       },
