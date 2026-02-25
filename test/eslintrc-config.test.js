@@ -25,6 +25,7 @@ import pack from "./utils/pack";
       expect(stats.hasErrors()).toBe(true);
       expect(errors).toHaveLength(1);
       expect(errors[0].message).toContain("full-of-problems.js");
+      expect(stats.hasWarnings()).toBe(true);
     });
   },
 );
