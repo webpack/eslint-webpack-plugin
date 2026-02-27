@@ -1,4 +1,4 @@
-// eslint-disable-next-line jsdoc/no-restricted-syntax
+// eslint-disable-next-line jsdoc/reject-any-type
 /** @typedef {any} EXPECTED_ANY */
 
 const { statSync } = require("node:fs");
@@ -107,7 +107,7 @@ const jsonStringifyReplacerSortKeys = (_, value) => {
   };
 
   if (value instanceof Object && !Array.isArray(value)) {
-    const sorted = Object.keys(value).sort().reduce(insert, {});
+    const sorted = Object.keys(value).toSorted().reduce(insert, {});
     for (const key of Object.keys(value)) delete value[key];
     Object.assign(value, sorted);
   }

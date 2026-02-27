@@ -1,5 +1,4 @@
 import { defineConfig } from "eslint/config";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import globals from "globals";
 
 export default defineConfig({

@@ -4,18 +4,18 @@ const ESLintError = require("./ESLintError");
 const { getESLint } = require("./getESLint");
 const { arrify } = require("./utils");
 
-/** @typedef {import('eslint').ESLint} ESLint */
-/** @typedef {import('eslint').ESLint.Formatter} Formatter */
-/** @typedef {import('eslint').ESLint.LintResult} LintResult */
-/** @typedef {import('webpack').Compiler} Compiler */
-/** @typedef {import('webpack').Compilation} Compilation */
-/** @typedef {import('./options').Options} Options */
-/** @typedef {import('./options').FormatterFunction} FormatterFunction */
+/** @typedef {import("eslint").ESLint} ESLint */
+/** @typedef {import("eslint").ESLint.Formatter} Formatter */
+/** @typedef {import("eslint").ESLint.LintResult} LintResult */
+/** @typedef {import("webpack").Compiler} Compiler */
+/** @typedef {import("webpack").Compilation} Compilation */
+/** @typedef {import("./options").Options} Options */
+/** @typedef {import("./options").FormatterFunction} FormatterFunction */
 /** @typedef {(compilation: Compilation) => Promise<void>} GenerateReport */
-/** @typedef {{errors?: ESLintError, warnings?: ESLintError, generateReportAsset?: GenerateReport}} Report */
+/** @typedef {{ errors?: ESLintError, warnings?: ESLintError, generateReportAsset?: GenerateReport }} Report */
 /** @typedef {() => Promise<Report>} Reporter */
-/** @typedef {(files: string|string[]) => void} Linter */
-/** @typedef {{[files: string]: LintResult}} LintResultMap */
+/** @typedef {(files: string | string[]) => void} Linter */
+/** @typedef {{ [files: string]: LintResult }} LintResultMap */
 
 /** @type {WeakMap<Compiler, LintResultMap>} */
 const resultStorage = new WeakMap();
@@ -98,7 +98,7 @@ async function loadFormatter(eslint, formatter) {
 
 /**
  * @param {Formatter} formatter formatter
- * @param {{ errors: LintResult[]; warnings: LintResult[]; }} results results
+ * @param {{ errors: LintResult[], warnings: LintResult[] }} results results
  * @returns {Promise<{ errors?: ESLintError, warnings?: ESLintError }>} errors and warnings
  */
 async function formatResults(formatter, results) {
@@ -178,7 +178,7 @@ function parseResults(options, results) {
  * @param {string | undefined} key a cache key
  * @param {Options} options options
  * @param {Compilation} compilation compilation
- * @returns {Promise<{lint: Linter, report: Reporter, threads: number}>} linter with additional functions
+ * @returns {Promise<{ lint: Linter, report: Reporter, threads: number }>} linter with additional functions
  */
 async function linter(key, options, compilation) {
   /** @type {ESLint} */

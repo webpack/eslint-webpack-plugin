@@ -10,7 +10,7 @@ describe("empty", () => {
       context: join(__dirname, "fixtures", "empty"),
       mode: "development",
       entry: "../",
-      plugins: [new ESLintPlugin({ configType: "eslintrc" })],
+      plugins: [new ESLintPlugin()],
     });
 
     compiler.run((err, stats) => {
