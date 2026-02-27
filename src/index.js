@@ -34,6 +34,7 @@ class ESLintWebpackPlugin {
     // Generate key for each compilation,
     // this differentiates one from the other when being cached.
     this.key = compiler.name || `${this.key}_${(compilerId += 1)}`;
+    this.options.failOnError ??= compiler.options.mode !== "development";
 
     const context = this.getContext(compiler);
     const excludedFiles = parseFiles(this.options.exclude || [], context);
