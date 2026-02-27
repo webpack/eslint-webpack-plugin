@@ -24,7 +24,6 @@ export default (entry, pluginConf = {}, webpackConf = {}) => {
         ignore: false,
         // TODO: update tests to run both states: test.each([[{threads: false}], [{threads: true}]])('it should...', async ({threads}) => {...})
         threads: true,
-        failOnError: false,
         ...pluginConf,
       }),
     ],
