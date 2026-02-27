@@ -65,7 +65,7 @@
     "@commitlint/config-conventional": "^20.4.2",
     "@types/fs-extra": "^11.0.4",
     "@types/micromatch": "^4.0.10",
-    "@types/node": "^25.3.0",
+    "@types/node": "^25.3.2",
     "@types/normalize-path": "^3.0.2",
     "chokidar": "^5.0.0",
     "cross-env": "^10.1.0",
@@ -75,7 +75,6 @@
     "eslint": "^10.0.2",
     "eslint-config-webpack": "^4.9.3",
     "fs-extra": "^11.3.3",
-    "globals": "^17.3.0",
     "husky": "^9.1.7",
     "jest": "^30.2.0",
     "lint-staged": "^16.2.7",
@@ -83,7 +82,7 @@
     "prettier": "^3.8.1",
     "standard-version": "^9.5.0",
     "typescript": "^5.9.3",
-    "webpack": "^5.105.2"
+    "webpack": "^5.105.3"
   },
   "peerDependencies": {
     "eslint": "^9.0.0 || ^10.0.0",
