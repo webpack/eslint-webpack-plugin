@@ -10,6 +10,7 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
+            failOnError: true,
             overrideConfigFile: join(
               __dirname,
               "./config-for-tests/eslint.config.mjs",
@@ -18,6 +19,7 @@ describe("multiple instances", () => {
             exclude: "error.js",
           }),
           new ESLintPlugin({
+            failOnError: true,
             overrideConfigFile: join(
               __dirname,
               "./config-for-tests/eslint.config.mjs",
@@ -41,6 +43,7 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
+            failOnError: true,
             overrideConfigFile: join(
               __dirname,
               "./config-for-tests/eslint.config.mjs",
@@ -49,6 +52,7 @@ describe("multiple instances", () => {
             exclude: "good.js",
           }),
           new ESLintPlugin({
+            failOnError: true,
             overrideConfigFile: join(
               __dirname,
               "./config-for-tests/eslint.config.mjs",
@@ -70,6 +74,7 @@ describe("multiple instances", () => {
       {
         plugins: [
           new ESLintPlugin({
+            failOnError: true,
             overrideConfigFile: join(
               __dirname,
               "./config-for-tests/eslint.config.mjs",
@@ -78,6 +83,7 @@ describe("multiple instances", () => {
             exclude: "error.js",
           }),
           new ESLintPlugin({
+            failOnError: true,
             overrideConfigFile: join(
               __dirname,
               "./config-for-tests/eslint.config.mjs",
