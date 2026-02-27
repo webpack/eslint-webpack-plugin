@@ -36,6 +36,7 @@ const schema = require("./options.json");
  * @property {number | boolean=} threads number of worker threads
  * @property {RegExp | RegExp[]=} resourceQueryExclude Specify the resource query to exclude
  * @property {string=} configType config type
+ * @property {string=} suppressionsLocation path to suppressions file (relative to options.context)
  */
 
 /** @typedef {PluginOptions & ESLintOptions} Options */
