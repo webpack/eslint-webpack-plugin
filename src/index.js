@@ -152,9 +152,9 @@ class ESLintWebpackPlugin {
       });
 
       // await and interpret results
-      compilation.hooks.additionalAssets.tapAsync(
+      compilation.hooks.processAssets.tapAsync(
         this.key,
-        async (callback) => {
+        async (_, callback) => {
           const { errors, warnings, generateReportAsset } = await report();
 
           if (warnings) {
