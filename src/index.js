@@ -6,10 +6,10 @@ const linter = require("./linter");
 const { getOptions } = require("./options");
 const { arrify, parseFiles, parseFoldersToGlobs } = require("./utils");
 
-/** @typedef {import('webpack').Compiler} Compiler */
-/** @typedef {import('webpack').Module} Module */
-/** @typedef {import('webpack').NormalModule} NormalModule */
-/** @typedef {import('./options').Options} Options */
+/** @typedef {import("webpack").Compiler} Compiler */
+/** @typedef {import("webpack").Module} Module */
+/** @typedef {import("webpack").NormalModule} NormalModule */
+/** @typedef {import("./options").Options} Options */
 
 const ESLINT_PLUGIN = "ESLintWebpackPlugin";
 const DEFAULT_FOLDER_TO_EXCLUDE = "**/node_modules/**";
@@ -80,7 +80,7 @@ class ESLintWebpackPlugin {
 
   /**
    * @param {Compiler} compiler compiler
-   * @param {Omit<Options, 'resourceQueryExclude'> & { resourceQueryExclude: RegExp[] }} options options
+   * @param {Omit<Options, "resourceQueryExclude"> & { resourceQueryExclude: RegExp[] }} options options
    * @param {string[]} wanted wanted files
    * @param {string[]} exclude excluded files
    */
@@ -93,9 +93,9 @@ class ESLintWebpackPlugin {
     if (isCompilerHooked) return;
 
     compiler.hooks.compilation.tap(this.key, async (compilation) => {
-      /** @type {import('./linter').Linter} */
+      /** @type {import("./linter").Linter} */
       let lint;
-      /** @type {import('./linter').Reporter} */
+      /** @type {import("./linter").Reporter} */
       let report;
       /** @type number */
       let threads;
@@ -151,9 +151,9 @@ class ESLintWebpackPlugin {
       });
 
       // await and interpret results
-      compilation.hooks.additionalAssets.tapAsync(
+      compilation.hooks.processAssets.tapAsync(
         this.key,
-        async (callback) => {
+        async (_, callback) => {
           const { errors, warnings, generateReportAsset } = await report();
 
           if (warnings) {

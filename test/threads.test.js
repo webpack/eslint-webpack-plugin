@@ -1,6 +1,4 @@
-/* eslint-env jest */
 import { join } from "node:path";
-import eslint from "eslint";
 import { loadESLint, loadESLintThreaded } from "../src/getESLint";
 
 describe("Threading", () => {
@@ -22,13 +20,12 @@ describe("Threading", () => {
 
   it("threaded should lint files", async () => {
     const threaded = await loadESLintThreaded("bar", 1, {
+      configType: "flat",
       ignore: false,
-      configType:
-        Number.parseFloat(eslint.ESLint.version) >= 9 ? "flat" : "eslintrc",
-      overrideConfigFile:
-        Number.parseFloat(eslint.ESLint.version) >= 9
-          ? join(__dirname, "./config-for-tests/eslint.config.mjs")
-          : join(__dirname, "./config-for-tests/.eslintrc.js"),
+      overrideConfigFile: join(
+        __dirname,
+        "./config-for-tests/eslint.config.mjs",
+      ),
     });
     try {
       const [good, bad] = await Promise.all([
@@ -53,14 +50,15 @@ describe("Threading", () => {
       const mockThread = { parentPort: { on: jest.fn() }, workerData: {} };
       const mockLintFiles = jest.fn();
       jest.mock("eslint", () => ({
-        ESLint: Object.assign(
-          function ESLint() {
-            this.lintFiles = mockLintFiles;
-          },
-          {
-            outputFixes: jest.fn(),
-          },
-        ),
+        loadESLint: async () =>
+          Object.assign(
+            function ESLint() {
+              this.lintFiles = mockLintFiles;
+            },
+            {
+              outputFixes: jest.fn(),
+            },
+          ),
       }));
       jest.mock("worker_threads", () => mockThread);
 

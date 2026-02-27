@@ -5,7 +5,7 @@ import conf from "./conf";
 /**
  * new a test webpack compiler
  * @param {string} context context
- * @param {import('../../src/options').Options} pluginConf plugin options
+ * @param {import("../../src/options").Options} pluginConf plugin options
  * @param {webpack.Configuration} webpackConf webpack configuration
  * @returns {ReturnType<webpack>} return result from webpack
  */

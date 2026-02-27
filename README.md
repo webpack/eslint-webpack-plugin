@@ -38,7 +38,7 @@ pnpm add -D eslint-webpack-plugin
 
 > [!NOTE]
 >
-> You also need to install `eslint >= 8` from npm, if you haven't already:
+> You also need to install `eslint >= 9` from npm, if you haven't already:
 
 ```console
 npm install eslint --save-dev
@@ -70,17 +70,12 @@ module.exports = {
 
 ## Options
 
-You can pass [ESLint Node.js API options](https://eslint.org/docs/developer-guide/nodejs-api#-new-eslintoptions).
+You can pass [ESLint Node.js API options](https://eslint.org/docs/latest/integrate/nodejs-api#-new-eslintoptions).
 
 > [!NOTE]
 >
 > The config option you provide will be passed to the `ESLint` class.
-> This is a different set of options than what you'd specify in `package.json` or `eslint.config.js` (since ESLint v9.0.0, formerly `.eslintrc`).
-> See the [ESlint docs](https://eslint.org/docs/developer-guide/nodejs-api#-new-eslintoptions) for more details.
-
-> [!WARNING]
->
-> In eslint-webpack-plugin version 1 the options were passed to the now-deprecated [CLIEngine](https://eslint.org/docs/developer-guide/nodejs-api#cliengine).
+> See the [ESlint docs](https://eslint.org/docs/latest/integrate/nodejs-api#-new-eslintoptions) for more details.
 
 ### `cache`
 
@@ -118,10 +113,10 @@ type configType = "flat" | "eslintrc";
 
 Specify the type of configuration to use with ESLint.
 
-- `eslintrc` is the classic configuration format available in most ESLint versions.
-- `flat` is the new format introduced in ESLint 8.21.0.
+- `flat` is the current standard configuration format.
+- `eslintrc` is the legacy configuration format and has been officially deprecated.
 
-The new configuration format is explained in its [own documentation](https://eslint.org/docs/latest/use/configure/configuration-files-new).
+The new configuration format is explained in its [own documentation](https://eslint.org/docs/latest/use/configure/configuration-files).
 
 ### `context`
 
@@ -209,7 +204,7 @@ type fix = boolean;
 
 - Default: `false`
 
-Will enable [ESLint autofix feature](https://eslint.org/docs/developer-guide/nodejs-api#-eslintoutputfixesresults).
+Will enable [ESLint autofix feature](https://eslint.org/docs/latest/integrate/nodejs-api#-eslintoutputfixesresults).
 
 **Be careful: this option will modify source files.**
 

@@ -3,7 +3,7 @@ const { validate } = require("schema-utils");
 const schema = require("./options.json");
 
 /** @typedef {import("eslint").ESLint.Options} ESLintOptions */
-/** @typedef {import('eslint').ESLint.LintResult} LintResult */
+/** @typedef {import("eslint").ESLint.LintResult} LintResult */
 
 /**
  * @callback FormatterFunction

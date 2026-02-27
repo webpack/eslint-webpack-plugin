@@ -8,7 +8,7 @@ declare class ESLintWebpackPlugin {
   options: import("./options").PluginOptions;
   /**
    * @param {Compiler} compiler compiler
-   * @param {Omit<Options, 'resourceQueryExclude'> & { resourceQueryExclude: RegExp[] }} options options
+   * @param {Omit<Options, "resourceQueryExclude"> & { resourceQueryExclude: RegExp[] }} options options
    * @param {string[]} wanted wanted files
    * @param {string[]} exclude excluded files
    */
