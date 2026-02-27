@@ -88,7 +88,7 @@ export type Options = PluginOptions & ESLintOptions;
  */
 export function getESLintOptions(loaderOptions: Options): ESLintOptions;
 /** @typedef {import("eslint").ESLint.Options} ESLintOptions */
-/** @typedef {import('eslint').ESLint.LintResult} LintResult */
+/** @typedef {import("eslint").ESLint.LintResult} LintResult */
 /**
  * @callback FormatterFunction
  * @param {LintResult[]} results results
